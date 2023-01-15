@@ -14,29 +14,26 @@ import java.awt.image.BufferStrategy;
  *****************************************************************************************/
 
 public class ManyBallsViewDoubleBuffered extends ManyBallsView{
-
+	// TODO: modify this constructor to accept an array of Balls, not just one Ball.
 	public ManyBallsViewDoubleBuffered(int width, int height, Ball b) {
 		super(width, height, b);
 		createBufferStrategy(2);
 	}
 
 	@Override
-	public void paint(Graphics g)
-	{
+	public void paint(Graphics g) {
 		BufferStrategy bf = this.getBufferStrategy();
 		if (bf == null)
 			return;
 
 		Graphics g2 = null;
 
-		try
-		{
+		try {
 			g2 = bf.getDrawGraphics();
 			// myPaint does the actual drawing
 			myPaint(g2);
 		}
-		finally
-		{
+		finally {
 			// It is best to dispose() a Graphics object when done with it.
 			g2.dispose();
 		}
@@ -49,8 +46,7 @@ public class ManyBallsViewDoubleBuffered extends ManyBallsView{
 		Toolkit.getDefaultToolkit().sync();
 	}
 
-	public void myPaint(Graphics g)
-	{
+	public void myPaint(Graphics g) {
 		super.paint(g);
 	}
 }

@@ -9,13 +9,14 @@ import java.awt.*;
  * This is the front-end for the ManyBalls program.
  *
  *****************************************************************************************/
-public class ManyBallsView extends JFrame{
+public class ManyBallsView extends JFrame {
 
     private Ball b;
     private int windowWidth;
     private int windowHeight;
 
     public ManyBallsView(int width, int height, Ball b) {
+        // TODO: modify this constructor to accept an array of Balls, not just one Ball.
         // Initialize instance variables.
         windowWidth = width;
         windowHeight = height;
@@ -28,14 +29,13 @@ public class ManyBallsView extends JFrame{
         this.setVisible(true);
     }
 
-    public void paint(Graphics g)
-    {
+    public void paint(Graphics g) {
         // Clear the window.
         g.setColor(Color.white);
         g.fillRect(0, 0, windowWidth, windowHeight);
 
+        // TODO: Modify this to call draw() on all 100 Balls.
         // Tell the ball to draw itself.
         b.draw(g);
     }
-
 }

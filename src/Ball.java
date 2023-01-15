@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-
 /*********************************************************************************
  * Ball class
  * Stores all of the information about a single ball including:
@@ -8,8 +7,7 @@ import java.awt.Graphics;
  * It provides methods to move the ball, handle bouncing within a rectangle
  * 		and draw itself.
  ***********************************************************************************/
-public class Ball
-{
+public class Ball {
 	private int x, y;		// Center of the ball
 	private int dx, dy;		// Velocity - how much to move the ball in one time unit
 	private int radius;		// Radius of the ball
@@ -26,8 +24,7 @@ public class Ball
 	 * @param colorIn	color
 	 */
 
-	public Ball (int xIn, int yIn, int dxIn, int dyIn, int radiusIn, Color colorIn)
-	{
+	public Ball (int xIn, int yIn, int dxIn, int dyIn, int radiusIn, Color colorIn) {
 		// Nothing to do but save the data in the object's data fields.
 		x = xIn;
 		y = yIn;
@@ -40,8 +37,7 @@ public class Ball
 	/**
 	 * Move the ball.  Add the velocity to its center.
 	 */
-	public void move()
-	{
+	public void move() {
 		x = x + dx;
 		y = y + dy;
 	}
@@ -57,18 +53,15 @@ public class Ball
 	 * @param yLow		y coord of top wall
 	 * @param yHigh		y coord of bottom wall
 	 */
-	public void bounce(int xLow, int xHigh, int yLow, int yHigh)
-	{
+	public void bounce(int xLow, int xHigh, int yLow, int yHigh) {
 		// Check for an x bounce.  Note that we bounce if the x is too
 		//  low or too high AND IS HEADING IN THE WRONG DIRECTION.
-		if ((x - radius <= xLow && dx < 0) || (x + radius >= xHigh && dx > 0))
-		{
+		if ((x - radius <= xLow && dx < 0) || (x + radius >= xHigh && dx > 0)) {
 			dx = -dx;
 		}
 
 		// Now check for a y bounce.
-		if ((y - radius <= yLow && dy < 0) || (y + radius >= yHigh && dy > 0))
-		{
+		if ((y - radius <= yLow && dy < 0) || (y + radius >= yHigh && dy > 0)) {
 			dy = -dy;
 		}
 	}
@@ -78,8 +71,7 @@ public class Ball
 	 * 
 	 * @param g			Graphics object in which to draw
 	 */
-	public void draw(Graphics g)
-	{
+	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
 	}

@@ -1,12 +1,11 @@
 // A - You need these two imports
 import java.awt.*;						
 import javax.swing.*;
-
 /******************************************************************************************
  * 
  * Program:	SampleGraphics
- * Created by:	Thibodeaux/Steinberg
- * Edited by: Blickensderfer
+ * Created for Intro. Prog. by: Thibodeaux/Steinberg
+ * With Edits for CS2 by: Z. Blickensderfer, Dec. '22
  * 
  * Description:
  * This program demonstrates some basic Java graphics. It introduces these classes (types):
@@ -35,10 +34,8 @@ import javax.swing.*;
  *****************************************************************************************/
 
 // B - Your class must extend JFrame
-public class SampleGraphics extends JFrame
-{
-	public SampleGraphics()
-	{
+public class SampleGraphics extends JFrame {
+	public SampleGraphics() {
 		// C - Create and display the window.
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Sample Graphics");		// Optional title.
@@ -46,15 +43,13 @@ public class SampleGraphics extends JFrame
 		this.setVisible(true);					// Display the window. SetVisible implicitly calls paint().
 	}
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		SampleGraphics window = new SampleGraphics();
 	}
 
 	// D - You need a paint() method with one Graphics parameter. This tells the computer 
 	//	what to draw each time the screen is painted.  Put all drawing instructions here.
-	public void paint(Graphics g) 		
-	{
+	public void paint(Graphics g) {
 		/***************** BASIC *****************/
 		// 1 - Write text in the window 
 		g.setFont(new Font("Serif", Font.PLAIN, 30));	
@@ -125,8 +120,7 @@ public class SampleGraphics extends JFrame
 		// 9 - More interesting polygon example
 		g.setColor(Color.magenta);
 		Polygon q = new Polygon();
-		for(int i = 0; i < 7; i++)
-		{
+		for(int i = 0; i < 7; i++) {
 			double angleInDegrees = i * 360.0 / 7;
 			double angleInRadians = angleInDegrees * Math.PI / 180;
 			int x = (int)(750 + 100 * Math.cos(angleInRadians));
