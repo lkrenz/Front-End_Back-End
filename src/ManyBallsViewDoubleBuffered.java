@@ -30,8 +30,8 @@ public class ManyBallsViewDoubleBuffered extends ManyBallsView{
 
 		try {
 			g2 = bf.getDrawGraphics();
-			// myPaint does the actual drawing
-			myPaint(g2);
+			// myPaint does the actual drawing, as described in ManyBallsView
+			super.paint(g2);
 		}
 		finally {
 			// It is best to dispose() a Graphics object when done with it.
@@ -44,9 +44,5 @@ public class ManyBallsViewDoubleBuffered extends ManyBallsView{
 		//Tell the System to do the Drawing now, otherwise it can take a few extra ms until
 		//Drawing is done which looks very jerky
 		Toolkit.getDefaultToolkit().sync();
-	}
-
-	public void myPaint(Graphics g) {
-		super.paint(g);
 	}
 }

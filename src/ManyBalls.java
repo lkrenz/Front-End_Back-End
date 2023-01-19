@@ -54,10 +54,10 @@ public class ManyBalls implements ActionListener {
 
 		// Create the front-end:
 		// Version ONE: our basic view. Notice how the animation is a little jerky?
-//		this.window = new ManyBallsView(MAX_WIDTH, MAX_HEIGHT, b);
+		this.window = new ManyBallsView(MAX_WIDTH, MAX_HEIGHT, b);
 
 		// Version TWO: using inheritance, let's make a double-buffered version of ManyBallsView.
-		this.window = new ManyBallsViewDoubleBuffered(MAX_WIDTH, MAX_HEIGHT, b);
+//		this.window = new ManyBallsViewDoubleBuffered(MAX_WIDTH, MAX_HEIGHT, b);
 
 		// Toolkit.getDefaultToolkit().sync();  // Consider this to reduce flicker
 
