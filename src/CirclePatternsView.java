@@ -21,11 +21,21 @@ public class CirclePatternsView extends JFrame {
 
     public CirclePatternsView(ArrayList<Circle> circles) {
         // TODO: Write the view's constructor.
+        this.circles = circles;
+
+        this.setTitle("Circle pattern");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        this.setVisible(true);
     }
 
     public void paint(Graphics g) {
         // TODO: write paint() so it draws all the circles on the window.
-
+        g.setColor(Color.white);
+        g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+        for (Circle c : circles)
+        {
+            c.draw(g);
+        }
     }
-
 }

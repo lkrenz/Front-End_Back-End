@@ -26,11 +26,13 @@ public class ManyBalls implements ActionListener {
 						// This says "I promise to have an actionPerformed() method"
 	private Ball b;									// Our moving ball
 	private ManyBallsView window;                   // The front-end.
-	
+
+	private Ball[] balls;
 	private static final int MAX_WIDTH = 600;		// Window size
 	private static final int MAX_HEIGHT = 700;		// Window size
 	private static final int TOP_OF_WINDOW = 22;	// Top of the visible window
-	
+
+	private static final int NUM_BALLS = 20;
 	private static final int DELAY_IN_MILLISEC = 20;  // Time delay between ball updates
 	
 	/**
@@ -50,14 +52,29 @@ public class ManyBalls implements ActionListener {
 
 		// TODO: modify this to create an array of 100 random Ball objects.
 		// Initialize the Ball.
-		b = new Ball(50, 100, 3, -3, 12, Color.red);
+		balls = new Ball[NUM_BALLS];
+		for (int i = 0; i < NUM_BALLS; i++)
+		{
+			int radius = (int)(Math.random() * 91) + 10;
+			int x = (int)(Math.random() * MAX_WIDTH) + 1;
+			int y = (int)(Math.random() * MAX_HEIGHT) + 1;
+			if (x + radius > MAX_WIDTH)
+				x = MAX_WIDTH - radius;
+			else if (radius > x)
+				x = radius;
+			if (y + radius > MAX_WIDTH)
+				y = MAX_HEIGHT - radius;
+			else if (radius > y)
+				y = radius;
 
+			balls[i] = new Ball(x, y, (int)(Math.random() * 21) - 10, (int)(Math.random() * 21) - 10, radius, new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256)));
+		}
 		// Create the front-end:
 		// Version ONE: our basic view. Notice how the animation is a little jerky?
-		this.window = new ManyBallsView(MAX_WIDTH, MAX_HEIGHT, b);
+//		this.window = new ManyBallsView(MAX_WIDTH, MAX_HEIGHT, balls);
 
 		// Version TWO: using inheritance, let's make a double-buffered version of ManyBallsView.
-//		this.window = new ManyBallsViewDoubleBuffered(MAX_WIDTH, MAX_HEIGHT, b);
+		this.window = new ManyBallsViewDoubleBuffered(MAX_WIDTH, MAX_HEIGHT, balls);
 
 		// Toolkit.getDefaultToolkit().sync();  // Consider this to reduce flicker
 
@@ -85,9 +102,11 @@ public class ManyBalls implements ActionListener {
 
 		// TODO: modify this to call move() and bounce() on all 100 Balls.
 		// Move the ball.
-		b.move();
-		b.bounce(0, MAX_WIDTH, TOP_OF_WINDOW, MAX_HEIGHT);
-
+		for (int i = 0; i < NUM_BALLS; i++)
+		{
+			balls[i].move();
+			balls[i].bounce(0, MAX_WIDTH, TOP_OF_WINDOW, MAX_HEIGHT);
+		}
 		// Update the window.
 		window.repaint();
 	}

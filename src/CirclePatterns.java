@@ -38,16 +38,46 @@ public class CirclePatterns {
 
     public void makeRow(int numCircles) {
         // TODO: Write makeRow so it adds the row of circles to the ArrayList of circles.
+        for (int i = 0; i < numCircles; i++)
+        {
+            Color color = Color.BLACK;
+            if (i % 2 == 1)
+                color = Color.BLACK;
+            else
+                color= Color.BLUE;
+
+            circles.add(new Circle(FIRST_CORNER_X + (i * 30), FIRST_CORNER_Y, DIAMETER, color));
+        }
     }
 
     public void makeDiagonal(int numCircles) {
         // TODO: Write makeDiagonal so it adds the diagonal of circles to the ArrayList of circles.
+        for (int i = 0; i < numCircles; i++)
+        {
+            Color color = Color.BLACK;
+            if (i % 2 == 1)
+                color = Color.BLACK;
+            else
+                color= Color.BLUE;
+
+            circles.add(new Circle(FIRST_CORNER_X + (i * 30), FIRST_CORNER_Y + (i * 30), DIAMETER, color));
+        }
     }
 
     public void makeTarget(int numCircles) {
         // TODO: Write makeTarget so it adds the target of circles to the ArrayList of circles.
         // Key idea: the circles have to start big, then get small.
         // That way, when drawn in order, they appear on top of each other.
+        for (int i = numCircles; i > 0; i--)
+        {
+            Color color = Color.BLACK;
+            if (i % 2 == 1)
+                color = Color.BLACK;
+            else
+                color = Color.BLUE;
+
+            circles.add(new Circle( numCircles * DIAMETER + FIRST_CORNER_X + (CHANGE_IN_RADIUS/2 * (numCircles - i)),  numCircles * DIAMETER + FIRST_CORNER_Y + (CHANGE_IN_RADIUS/2 * (numCircles - i)), SMALLEST_RADIUS + (i * CHANGE_IN_RADIUS), color));
+        }
     }
 
     public void run() {
@@ -64,6 +94,7 @@ public class CirclePatterns {
         numCircles = this.getNumCircles();
         this.makeTarget(numCircles);
         window.repaint();
+
     }
 
     public static void main(String[] args) {
